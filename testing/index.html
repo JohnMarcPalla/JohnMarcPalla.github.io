@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.css">
     <title>MakiPass</title>
-
+    
+    <!-- Adress Autofill -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.js"></script>
     <script type="text/javascript" src="https://f001.backblazeb2.com/file/buonzz-assets/jquery.ph-locations.js"></script>
     <script type="text/javascript">
@@ -49,13 +50,15 @@
             <h1 class="m-2">Health Declaration Form</h1>
         </div>
         <form class="p-3 form-inline" action="">
-            <div class="form-group" style="margin-bottom: 10px;">
-                <label for="fname">First Name</label>
-                <input type="text" class="form-control" id="fname" aria-describedby="emailHelp" placeholder="Juan">
-            </div>
-            <div class="form-group" style="margin-bottom: 10px;">
-                <label for="mname">Middle Name</label>
-                <input type="text" class="form-control" id="mname" aria-describedby="emailHelp" placeholder="Marciano">
+            <div class="row">
+                <div class="form-group col-md-8" style="margin-bottom: 10px;">
+                    <label for="fname">First Name</label>
+                    <input type="text" class="form-control" id="fname" aria-describedby="name" placeholder="Juan">
+                </div>
+                <div class="form-group col-md-4" style="margin-bottom: 10px;">
+                    <label for="mname">Middle Name</label>
+                    <input type="text" class="form-control" id="mname" aria-describedby="emailHelp" placeholder="Marciano">
+                </div>
             </div>
             <div class="form-group" style="margin-bottom: 10px;">
                 <label for="lname">Last Name</label>
