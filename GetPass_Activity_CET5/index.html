@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <title>MakiPass</title>
+    <link rel="icon" type="image/gif/png" href="webicon.png">
+    
+    <!-- Adress Autofill -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.js"></script>
+    <script type="text/javascript" src="https://f001.backblazeb2.com/file/buonzz-assets/jquery.ph-locations.js"></script>
+    <script type="text/javascript">
+        var my_handlers = {
+            fill_provinces:  function(){
+                var region_code = $(this).val();
+                $('#inputprov').ph_locations('fetch_list', [{"region_code": region_code}]);
+            },
+
+            fill_cities: function(){
+                var province_code = $(this).val();
+                $('#inputcity').ph_locations( 'fetch_list', [{"province_code": province_code}]);
+            },
+
+            fill_barangays: function(){
+                var city_code = $(this).val();
+                $('#inputbrgy').ph_locations('fetch_list', [{"city_code": city_code}]);
+            }
+        };
+    
+        $(function(){
+            $('#inputState').on('change', my_handlers.fill_provinces);
+            $('#inputprov').on('change', my_handlers.fill_cities);
+            $('#inputcity').on('change', my_handlers.fill_barangays);
+
+            $('#inputState').ph_locations({'location_type': 'regions'});
+            $('#inputprov').ph_locations({'location_type': 'provinces'});
+            $('#inputcity').ph_locations({'location_type': 'cities'});
+            $('#inputbrgy').ph_locations({'location_type': 'barangays'});
+
+            $('#inputState').ph_locations('fetch_list');
+        });
+    </script>
+
+
+</head>
+<body class="d-flex justify-content-center">
+    <div class="container-sm bg-white mt-5 mb-5 p-0" style="border-radius: 20px;border:1px solid #cecece;">
+        <div class="container-sm bg-primary rounded-top p-2">
+            <h1 class="m-2">Health Declaration Form</h1>
+        </div>
+        <form class="p-3 form-inline" action="">
+            <div class="row">
+                <div class="form-group col-md-8" style="margin-bottom: 10px;">
+                    <label for="fname">First Name</label>
+                    <input type="text" class="form-control" id="fname" aria-describedby="name" placeholder="Juan" required>
+                </div>
+                <div class="form-group col-md-4" style="margin-bottom: 10px;">
+                    <label for="mname">Middle Name</label>
+                    <input type="text" class="form-control" id="mname" aria-describedby="emailHelp" placeholder="Marciano" required>
+                </div>
+            </div>
+            <div class="form-group" style="margin-bottom: 10px;">
+                <label for="lname">Last Name</label>
+                <input type="text" class="form-control" id="lname" aria-describedby="emailHelp" placeholder="Dela Cruz" required>
+            </div>
+            <div class="form-group" style="margin-bottom: 10px;">
+                <label for="username">Preferred Username</label>
+                <input type="text" class="form-control" id="username" aria-describedby="emailHelp" placeholder="juanmdc" required>
+            </div>
+            <div class="form-group" style="margin-bottom: 10px;">
+                <label for="adress">Street Adress</label>
+                <input type="text" class="form-control" id="adress" aria-describedby="emailHelp" placeholder="123 Mapagmahal St.">
+            </div>
+            <div class="row" style="margin-bottom: 10px;">
+                <div class="form-group col-md-6">
+                    <label for="inputState">Region</label>
+                    <select id="inputState" class="form-control">
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputprov">Province</label>
+                    <select id="inputprov" class="form-control">
+                    </select>
+                </div>               
+            </div>
+            <div class="row" style="margin-bottom: 10px;">
+                <div class="form-group col-md-5">
+                    <label for="inputcity">City</label>
+                    <select id="inputcity" class="form-control">
+                    </select>
+                </div>
+                <div class="form-group col-md-5">
+                    <label for="inputbrgy">Barangay</label>
+                    <select id="inputbrgy" class="form-control">
+                    </select>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="inputzip">ZIP</label>
+                    <input type="text" class="form-control" id="inputzip" maxlength="4" placeholder="0000">
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 10px;">
+                <div class="form-group col-md-6">
+                    <label for="inputcontact">Contact Number</label>
+                    <input type="tel" class="form-control" id="inputcontact" placeholder="+639274251810">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputemail">Email</label>
+                    <input type="email" class="form-control" id="inputemail" placeholder="juanmdc@gmail.com">
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 10px;">
+                <div class="form-group col-md-3">
+                    <label for="inputsex">Sex</label>
+                    <select id="inputsex" class="form-control">
+                        <option hidden>...</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="inputzip">Date of Birth</label>
+                    <input type="date" class="form-control" id="inputdob">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="inputrace">Nationality</label>
+                    <input type="text" class="form-control" id="inputrace" placeholder="Filipino">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="inputcivil">Civil Status</label>
+                    <select id="inputcivil" class="form-control">
+                        <option hidden>...</option>
+                        <option>Married</option>
+                        <option>Single</option>
+                        <option>Divorced</option>
+                        <option>Widowed</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 10px;">
+                <div class="form-group col-md-5">
+                    <label for="inputempstat">Employment Status</label>
+                    <select id="inputempstat" class="form-control">
+                        <option hidden>...</option>
+                        <option>Employed</option>
+                        <option>Self-Employed</option>
+                        <option>Unemployed</option>
+                        <option>Constultant</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-7">
+                    <label for="inputcompany">Company/Employer</label>
+                    <input type="text" class="form-control" id="inputcompany">
+                </div>
+                
+            </div>
+
+            <hr class="my-4">
+
+            <div class="form-group" style="margin-bottom: 15px;">
+                <h5 class="mb-3">1. Are you experiencing (nakakaranas ka ba ng):</h5>
+                <div class="form-group row px-5" style="margin-bottom: 10px;">
+                    <label class="col-md-5" for="sorethroat">Sore throat (pananakit ng lalamunan)</label>
+                    <span>
+                        <select class="form-control col-md-3" id="sorethroat">
+                            <option hidden>...</option>
+                            <option>Yes/Oo</option>
+                            <option>No/Hindi</option>
+                        </select>
+                    </span>
+                </div>
+                <div class="form-group row px-5" style="margin-bottom: 10px;">
+                    <label for="bodypain">Body pains (pananakit ng katawan)</label>
+                    <span>
+                        <select class="form-control col-md-3" id="bodypain">
+                            <option hidden>...</option>
+                            <option>Yes/Oo</option>
+                            <option>No/Hindi</option>
+                        </select>
+                    </span>
+                </div>
+                <div class="form-group row px-5" style="margin-bottom: 10px;">
+                    <label for="headache">Headache (sakit ng ulo)</label>
+                    <span>
+                        <select class="form-control col-md-3" id="headache">
+                            <option hidden>...</option>
+                            <option>Yes/Oo</option>
+                            <option>No/Hindi</option>
+                        </select>
+                    </span>
+                </div>
+                <div class="form-group row px-5" style="margin-bottom: 10px;">
+                    <labelfor="fever">Fever the past few days (lagnat sa nakalipas na araw)</label>
+                    <span>
+                        <select class="form-control col-md-3" id="fever">
+                            <option hidden>...</option>
+                            <option>Yes/Oo</option>
+                            <option>No/Hindi</option>
+                        </select>
+                    </span>
+                </div>
+                <div class="form-group row px-5" style="margin-bottom: 10px;">
+                    <label for="colds">Cough or colds (ubo o sipon)</label>
+                    <span>
+                        <select class="form-control col-md-3" id="colds">
+                            <option hidden>...</option>
+                            <option>Yes/Oo</option>
+                            <option>No/Hindi</option>
+                        </select>
+                    </span>
+                </div>
+                <div class="form-group row px-5" style="margin-bottom: 10px;">
+                    <label for="breath">Shortness of breath (hinahabol ang paghinga)</label>
+                    <span>
+                        <select class="form-control col-md-3" id="breath">
+                            <option hidden>...</option>
+                            <option>Yes/Oo</option>
+                            <option>No/Hindi</option>
+                        </select>
+                    </span>
+                </div>
+                <div class="form-group row px-5" style="margin-bottom: 10px;">
+                    <label for="diarrhea">Diarrhea (pagtatae)</label>
+                    <span>
+                        <select class="form-control col-md-3" id="diarrhea">
+                            <option hidden>...</option>
+                            <option>Yes/Oo</option>
+                            <option>No/Hindi</option>
+                        </select>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group" style="margin-bottom: 15px;">
+                <h5 class="mb-3">2. Have you worked together or stayed in the same close environment of a confirmed COVID-19 case?  (May nakasama ka ba o nakatrabahong tao na kumpirmadong may COVID-19 o coronavirus?)</h5>
+                <div class="form-group row px-5">
+                    <span>
+                        <select class="form-control col-md-3" id="q2">
+                            <option hidden>...</option>
+                            <option>Yes/Oo</option>
+                            <option>No/Hindi</option>
+                        </select>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group" style="margin-bottom: 15px;">
+                <h5 class="mb-3">3. Have you had any contact with anyone with fever, cough, colds, and sore throat the past 2 weeks? (Mayroon ka bang nakasama na may lagnat, ubo, sipon o sakit nglalamunan sa nakalipas na 2 linggo?)</h5>
+                <div class="form-group row px-5">
+                    <span>
+                        <select class="form-control col-md-3" id="q3">
+                            <option hidden>...</option>
+                            <option>Yes/Oo</option>
+                            <option>No/Hindi</option>
+                        </select>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group" style="margin-bottom: 15px;">
+                <h5 class="mb-3">4. Have you travelled outside the Philippines in the last 14 days? (Ikaw ba ay nagbiyahe sa labas ng Pilipinas sa nakalipas na 14 na araw?)</h5>
+                <div class="form-group row px-5">
+                    <span>
+                        <select class="form-control col-md-3" id="q4">
+                            <option hidden>...</option>
+                            <option>Yes/Oo</option>
+                            <option>No/Hindi</option>
+                        </select>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group" style="margin-bottom: 15px;">
+                <h5 class="mb-3">5. Have you travelled to any areas in NCR aside from your home? (Ikaw ba ay nagpunta sa ibang parte ng NCR o Metro Manila bukod sa iyong bahay?)  Specify where if your answer is yes. (Sabihin kung saan kung ang sagot mo ay oo.)</h5>
+                <div class="form-group row px-5">
+                    <span>
+                        <select class="form-control col-md-3" id="q5a" style="margin-bottom: 10px;">
+                            <option hidden>...</option>
+                            <option>Yes/Oo</option>
+                            <option>No/Hindi</option>
+                        </select>
+                        <input class="form-control" type="text" id="q5b" placeholder="Answer if yes">
+                    </span>
+                </div>
+            </div>
+            <div class="form-group" style="margin-bottom: 15px;">
+                <h5 class="mb-3">6. I am a PWD</h5>
+                <div class="form-group row px-5">
+                    <span>
+                        <select class="form-control col-md-3" id="q6">
+                            <option hidden>...</option>
+                            <option>Yes/Oo</option>
+                            <option>No/Hindi</option>
+                        </select>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group" style="margin-bottom: 15px;">
+                <h5 class="mb-3">7. I am Pregnant</h5>
+                <div class="form-group row px-5">
+                    <span>
+                        <select class="form-control col-md-3" id="q7">
+                            <option hidden>...</option>
+                            <option>Yes/Oo</option>
+                            <option>No/Hindi</option>
+                        </select>
+                    </span>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="form-group">
+                <h6>Privacy Agreement</h6>
+                <p>I hereby authorize MakiPass to collect and process the data indicated in survey for the purpose of effecting
+                     control of the COVID-19 infection. I understand that my personal information is protected by RA 10173, Data
+                      Privacy Act of 2012, that I am required by RA 11469, Bayanihan to Heal As One Act, to provide truthful
+                       informationand that this health declaration is in accordance with memoranda issued by various government 
+                       institutions, including the Joint Memorandum Circular No. 20-04-A Series 2020 by the Department of Trade
+                        and Industry and the Department of Labor and Employment, Memorandum Circular No. 2020-004 by the Department
+                        of Tourism, and Memorandum Circular No 2020-077 by the Department of Interior and Local Government.</p>
+                <div class="form-row align-content-end">
+                    <div class="col-auto">
+                        <div class="form-check mb-2">
+                          <input class="form-check-input" type="checkbox" id="autoSizingCheck" required>
+                          <label class="form-check-label" for="autoSizingCheck">
+                            I have read and agree the MakiPass Privacy Agreement
+                          </label>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="js/bootstrap.js"></script>
+</body>
+</html>
