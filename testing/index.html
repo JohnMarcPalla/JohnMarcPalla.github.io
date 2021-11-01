@@ -6,6 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.css">
     <title>MakiPass</title>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.js"></script>
+    <script type="text/javascript" src="https://f001.backblazeb2.com/file/buonzz-assets/jquery.ph-locations.js"></script>
+    <script type="text/javascript">
+        var my_handlers = {
+            fill_provinces:  function(){
+                var region_code = $(this).val();
+                $('#inputprov').ph_locations('fetch_list', [{"region_code": region_code}]);
+            },
+
+            fill_cities: function(){
+                var province_code = $(this).val();
+                $('#inputcity').ph_locations( 'fetch_list', [{"province_code": province_code}]);
+            },
+
+            fill_barangays: function(){
+                var city_code = $(this).val();
+                $('#inputbrgy').ph_locations('fetch_list', [{"city_code": city_code}]);
+            }
+        };
+    
+        $(function(){
+            $('#inputState').on('change', my_handlers.fill_provinces);
+            $('#inputprov').on('change', my_handlers.fill_cities);
+            $('#inputcity').on('change', my_handlers.fill_barangays);
+
+            $('#inputState').ph_locations({'location_type': 'regions'});
+            $('#inputprov').ph_locations({'location_type': 'provinces'});
+            $('#inputcity').ph_locations({'location_type': 'cities'});
+            $('#inputbrgy').ph_locations({'location_type': 'barangays'});
+
+            $('#inputState').ph_locations('fetch_list');
+        });
+    </script>
+
+
 </head>
 <body class="d-flex justify-content-center">
     <div class="container-sm bg-white mt-5 mb-5 p-0" style="border-radius: 20px;border:1px solid #cecece;">
@@ -34,44 +70,31 @@
                 <input type="email" class="form-control" id="adress" aria-describedby="emailHelp" placeholder="123 Mapagmahal St.">
             </div>
             <div class="row" style="margin-bottom: 10px;">
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-6">
                     <label for="inputState">Region</label>
                     <select id="inputState" class="form-control">
-                      <option hidden>Select Region</option>
-                      <option>National Capital Region(NCR)</option>
-                      <option>Cordillera Administrative Region(CAR)</option>
-                      <option>Region I</option>
-                      <option>Region II</option>
-                      <option>Region III</option>
-                      <option>Region IV-A</option>
-                      <option>Region IV-B</option>
-                      <option>Region V</option>
-                      <option>Region VI</option>
-                      <option>Region VII</option>
-                      <option>Region VIII</option>
-                      <option>Region IX</option>
-                      <option>Region X</option>
-                      <option>Region XI</option>
-                      <option>Region XII</option>
-                      <option>Region XIII</option>
-                      <option>BARMM</option>
                     </select>
                 </div>
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-6">
+                    <label for="inputprov">Province</label>
+                    <select id="inputprov" class="form-control">
+                    </select>
+                </div>               
+            </div>
+            <div class="row" style="margin-bottom: 10px;">
+                <div class="form-group col-md-5">
                     <label for="inputcity">City</label>
                     <select id="inputcity" class="form-control">
-                        <option hidden>Select City</option>
                     </select>
                 </div>
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-5">
                     <label for="inputbrgy">Barangay</label>
                     <select id="inputbrgy" class="form-control">
-                        <option hidden>Select Barangay</option>
                     </select>
                 </div>
                 <div class="form-group col-md-2">
                     <label for="inputzip">ZIP</label>
-                    <input type="text" class="form-control" id="inputzip" aria-describedby="emailHelp" placeholder="0000">
+                    <input type="text" class="form-control" id="inputzip" maxlength="4" placeholder="0000">
                 </div>
             </div>
             <div class="row" style="margin-bottom: 10px;">
