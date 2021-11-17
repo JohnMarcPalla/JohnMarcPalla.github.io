@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="customized_bootstrap.css">
+    <script type="text/javascript">
+      function onload(){
+        document.getElementById("homecontent").hidden = false;
+      }
+      function navbarclick(option){
+        document.getElementById("homecontent").hidden = true;
+        document.getElementById("menucontent").hidden = true;
+        document.getElementById("musiccontent").hidden = true;
+        document.getElementById("jobscontent").hidden = true;
+
+        document.getElementById(option).hidden = false;
+			  return false;
+      }
+
+      function play(title){
+        document.getElementById('iframeyt').src = title;
+        return false;
+        };
+    </script>
+</head>
+
+<body onload="onload()">
+  <div class="container p-0 border" style="border-radius: 1rem; background-color: #ccaa66;" >
+    <div class="container">
+      <h1 class="text-center"> Jake's Cofee Shop </h1>
+    </div>
+    <div class="container border-top border-bottom" style="overflow-y:auto ;" >
+        <div class="row midsection">
+          <div class="container col-2 pe-5 pt-5" style="background-color: #E8D882; text-align: end;">
+            <p><a href="" onclick="return navbarclick('homecontent')">Home</a></p>
+            <p><a href="" onclick="return navbarclick('menucontent')">Menu</a></p>
+            <p><a href="" onclick="return navbarclick('musiccontent')">Music</a></p>
+            <p><a href="" onclick="return navbarclick('jobscontent')">Jobs</a></p>
+          </div>
+          <div class="container col-10 pt-3" style="background-color: #f1e8b0;">
+            <div id="homecontent" hidden>
+              <h2>Home</h2>
+              <p>Come in and experience...</p>
+              <img id="CoffeePic" class="floatright" src="coffee.jpg" alt="coffee cup" width="200" height="200">
+              <ul>
+                  <li>Specialty Coffee and Tea</li>
+                  <li>Freshly made sandwiches</li>
+                  <li>Bagels, Muffins, and Organic Snacks</li>
+                  <li>Music and Poetry Readings</li>
+                  <li>Open mic nights</li>
+                  <li> ... </li>
+              </ul>
+              <p>23 Pine Road <br> Nottingham, NG1 5YU <br> 0115 9324567</p>
+            </div>
+            <div id="menucontent" hidden>
+              <h2>Menu</h2>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Item</th>
+                    <th scope="col">Small</th>
+                    <th scope="col">Medium</th>
+                    <th scope="col">Large</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Frappe</th>
+                    <td><span>&#8369</span>165.00</td>
+                    <td><span>&#8369</span>185.00</td>
+                    <td><span>&#8369</span>205.00</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Mocha Macchiato</th>
+                    <td><span>&#8369</span>165.00</td>
+                    <td><span>&#8369</span>185.00</td>
+                    <td><span>&#8369</span>205.00</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Brewed coffee</th>
+                    <td><span>&#8369</span>165.00</td>
+                    <td><span>&#8369</span>185.00</td>
+                    <td><span>&#8369</span>205.00</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Cappuccino</th>
+                    <td><span>&#8369</span>165.00</td>
+                    <td><span>&#8369</span>185.00</td>
+                    <td><span>&#8369</span>205.00</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Iced coffee</th>
+                    <td><span>&#8369</span>165.00</td>
+                    <td><span>&#8369</span>185.00</td>
+                    <td><span>&#8369</span>205.00</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Americano</th>
+                    <td><span>&#8369</span>165.00</td>
+                    <td><span>&#8369</span>185.00</td>
+                    <td><span>&#8369</span>205.00</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Hot chocolate</th>
+                    <td><span>&#8369</span>165.00</td>
+                    <td><span>&#8369</span>185.00</td>
+                    <td><span>&#8369</span>205.00</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Milk</th>
+                    <td><span>&#8369</span>165.00</td>
+                    <td><span>&#8369</span>185.00</td>
+                    <td><span>&#8369</span>205.00</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div id="musiccontent" hidden>
+              <h2>Music</h2>
+              <div class="iframe-container">
+                <iframe id="iframeyt" src="https://www.youtube.com/embed/XDpoBc8t6gE?controls=0" allow="autoplay"></iframe>
+              </div>
+              <h6>Playlist</h6>
+              <a onclick='return play("https://www.youtube.com/embed/XDpoBc8t6gE?controls=0")' href="">kudasai - the girl i haven't met</a><br>
+              <a onclick='return play("https://www.youtube.com/embed/QL9_rPPyCMQ?controls=0")' href="">kudasai - dream of her</a><br>
+              <a onclick='return play("https://www.youtube.com/embed/XAo7aEb6ZAk?controls=0")' href="">kudasai - when i see you</a><br>
+              <a onclick='return play("https://www.youtube.com/embed/oAGWFop_Hx8?controls=0")' href="">kudasai - technicolor</a><br>
+              <a onclick='return play("https://www.youtube.com/embed/E7YpBpsNmU8?controls=0")' href="">kudasai - oh darling</a><br>
+              <a onclick='return play("https://www.youtube.com/embed/U--4WuTPzVw?controls=0")' href="">kudasai - a night together</a><br>
+              <a onclick='return play("https://www.youtube.com/embed/A0wMqD_jIV4?controls=0")' href="">kudasai - memories with her</a><br>
+            </div>
+            <div id="jobscontent" hidden>
+              <h2>Jobs</h2>
+              <img class="hiringimg" src="hiring.jpg">
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="footer">
+      <footer>
+          Copyright &copy; 2011 Jake's Coffee House<br>
+          <a href="mailto:jake@jcoffee.com">jake@jcoffee.com</a>
+      </footer>
+    </div>
+  </div>
+</body>
+
+</html>
